@@ -62,7 +62,7 @@
                         1. 💡 Consulta Conceptual TCCR (Q&A)
                     </h4>
                     <p class="text-sm text-gray-600 mb-3">
-                        Pregunte sobre cualquier concepto, elemento o pilar de la TCCR. La IA responderá de forma rigurosa y académica, basándose **estrictamente** en el marco teórico de Jalin Simunovic (2025).
+                        Pregunte sobre cualquier concepto, elemento o pilar de la TCCR. La IA responderá de forma rigurosa y académica, basándose <strong>estrictamente</strong> en el marco teórico de Jalin Simunovic (2025).
                     </p>
                     <textarea id="qaInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 mb-3" rows="2" placeholder="Ej: ¿Cuál es el rol de la 'Actitud Epistémica' en la TCCR?"></textarea>
                     <button id="queryTCCRBtn" class="w-full px-4 py-2 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition duration-150 flex items-center justify-center shadow-lg">
@@ -157,6 +157,17 @@
         
         // --- Funciones de Utilidad ---
 
+        /** * Limpia el texto de salida de la IA, eliminando los dobles asteriscos (**) 
+         * y convirtiendo los saltos de línea (\n) a <br>.
+         */
+        function cleanTextForOutput(text) {
+            // 1. Quitar asteriscos dobles (**)
+            let cleanedText = text.replace(/\*\*/g, '');
+            // 2. Convertir saltos de línea para HTML
+            cleanedText = cleanedText.replace(/\n/g, '<br>');
+            return cleanedText;
+        }
+
         /** Maneja las peticiones con reintentos y backoff exponencial */
         async function fetchWithRetry(url, payload, maxRetries = 5) {
             let lastError = null;
@@ -196,13 +207,14 @@
             No uses conocimiento externo o ajeno a la TCCR.
             
             MARCO TEÓRICO CLAVE:
-            - **Ontología Sistémico-Relacional:** El ser humano es fundamentalmente **vínculo**. El núcleo de estudio del Trabajo Social es la **estructuración relacional** y la "intersección psicosocial" (interacción mente-sociedad).
-            - **Epistemología Cognosistémica:** Fusión de lo cognitivo y lo sistémico para comprender la construcción de narrativas interconectadas. 
-            - **Metodología:** Ecosistémica-Narrativa. Articulación orgánica de micro–meso–macro con foco en la **transformación relacional** y la **justicia social**.
-            - **Cognosistema:** Suprasistema narrativo ecosistémico de mayor nivel que integra todos los sistemas narrativos.
-            - **Sistema Narrativo Básico (8 elementos):** Experiencia, Percepciones/Emociones, Contexto, Contenido Proposicional, Evaluación Cognitiva, Actitud Epistémica, Propósito Narrativo, Función Narrativa.
-            - **Dinámica:** Ciclo vital + Fases Beta (estabilidad), Alfa (crisis), Delta (reorganización/transformación).
+            - Ontología Sistémico-Relacional: El ser humano es fundamentalmente vínculo. El núcleo de estudio del Trabajo Social es la estructuración relacional y la "intersección psicosocial" (interacción mente-sociedad).
+            - Epistemología Cognosistémica: Fusión de lo cognitivo y lo sistémico para comprender la construcción de narrativas interconectadas. 
+            - Metodología: Ecosistémica-Narrativa. Articulación orgánica de micro–meso–macro con foco en la transformación relacional y la justicia social.
+            - Cognosistema: Suprasistema narrativo ecosistémico de mayor nivel que integra todos los sistemas narrativos.
+            - Sistema Narrativo Básico (8 elementos): Experiencia, Percepciones/Emociones, Contexto, Contenido Proposicional, Evaluación Cognitiva, Actitud Epistémica, Propósito Narrativo, Función Narrativa.
+            - Dinámica: Ciclo vital + Fases Beta (estabilidad), Alfa (crisis), Delta (reorganización/transformación).
             
+            IMPORTANTE: Para el formateo del texto de salida, NO utilices los asteriscos dobles (**). Solo utiliza texto plano y saltos de línea.
             Responde de manera clara, concisa y utilizando la terminología específica de la TCCR.
         `;
 
@@ -228,7 +240,8 @@
                 const result = await fetchWithRetry(API_URL_FLASH, payload);
                 const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
                 
-                qaText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                // Aplicar el filtro de limpieza al texto generado
+                qaText.innerHTML = cleanTextForOutput(text);
                 
             } catch (error) {
                 console.error(error);
@@ -257,7 +270,7 @@
             generateMemeBtn.disabled = true;
             memeOutput.classList.add('hidden');
             
-            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR). Tu tarea es generar un "Meme Cognosistémico" (unidad de significado estratégica) que sea conciso, potente, fácilmente propagable y que contradiga/transforme la narrativa subyugante proporcionada por el usuario. El Meme debe basarse en la ontología sistémico-relacional de la TCCR ("el ser humano es vínculo") y promover la justicia social. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
+            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR). Tu tarea es generar un "Meme Cognosistémico" (unidad de significado estratégica) que sea conciso, potente, fácilmente propagable y que contradiga/transforme la narrativa subyugante proporcionada por el usuario. El Meme debe basarse en la ontología sistémico-relacional de la TCCR ("el ser humano es vínculo") y promover la justicia social. IMPORTANTE: No uses asteriscos dobles (**) para el formateo. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
 
             const userQuery = `Narrativa dominante o problemática: "${userNarrative}". Genera el Meme Cognosistémico transformador y su explicación.`;
 
@@ -273,9 +286,12 @@
                 // Formateo del resultado: separamos el meme de la explicación
                 const parts = text.split('\n').filter(p => p.trim() !== '');
                 if (parts.length >= 2) {
-                    memeText.innerHTML = `<span class="text-xl font-extrabold text-blue-700 block mb-2">"${parts[0]}"</span><p>${parts.slice(1).join('<br>')}</p>`;
+                    // Limpiamos los asteriscos de la línea del meme y el texto explicativo
+                    const memeLine = parts[0].replace(/\*\*/g, '').trim(); 
+                    const explanationText = parts.slice(1).join('\n');
+                    memeText.innerHTML = `<span class="text-xl font-extrabold text-blue-700 block mb-2">"${memeLine}"</span><p>${cleanTextForOutput(explanationText)}</p>`;
                 } else {
-                    memeText.textContent = text;
+                    memeText.textContent = text.replace(/\*\*/g, ''); // Limpieza simple si no hay formato de meme
                 }
                 
             } catch (error) {
@@ -304,7 +320,7 @@
             analyzeBtn.disabled = true;
             analysisOutput.classList.add('hidden');
             
-            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). Analiza la siguiente narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
+            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). Analiza la siguiente narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). IMPORTANTE: No utilices asteriscos dobles (**) para formatear el texto. Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
 
             const userQuery = `Analiza el siguiente caso/situación con la TCCR, identificando la Tripleta y los niveles de intervención requeridos: "${userNarrative}".`;
 
@@ -319,8 +335,8 @@
                 const candidate = result.candidates?.[0];
                 const text = candidate?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
                 
-                // 1. Extraer texto y formatear para HTML (Markdown)
-                analysisText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                // 1. Extraer texto y aplicar el filtro de limpieza
+                analysisText.innerHTML = cleanTextForOutput(text);
 
                 // 2. Extraer fuentes (grounding sources)
                 let sources = [];
