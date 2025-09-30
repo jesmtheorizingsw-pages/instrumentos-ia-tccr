@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR)</title>
+    <!-- Incluyendo Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Usamos la fuente Inter, o un fallback sans-serif */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9; /* Gris claro de fondo */
+        }
+        /* Estilo para un degradado sutil en el hero */
+        .hero-bg {
+            background-image: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6; /* Azul de Tailwind */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor Principal Centrado -->
+    <div class="min-h-screen flex flex-col items-center p-4 sm:p-8">
+
+        <!-- Header y Título Principal (Hero Section) -->
+        <header class="w-full max-w-5xl text-white hero-bg shadow-2xl rounded-xl p-8 mb-8">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 text-indigo-300">
+                TEORÍA COGNOSISTÉMICA
+            </h1>
+            <h2 class="text-xl sm:text-2xl font-light mb-4 text-gray-200">
+                De la Construcción Relacional Psicosocial Humana (TCCR)
+            </h2>
+            <p class="text-sm italic text-indigo-400 border-t border-indigo-500 pt-3">
+                Jalin Simunovic (2025) | Marco Unificado para el Trabajo Social
+            </p>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="w-full max-w-5xl space-y-8">
+
+            <!-- Bloques de Definición (Mantenidos) -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                    1. La TCCR como Metateoría
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                    La TCCR se establece como una **Metateoría** unificada y rigurosa para explicar cómo los individuos y colectivos negocian y transforman su **realidad psicosocial**. Su premisa es clara: esta realidad no es objetiva, sino que se configura dinámicamente mediante la creación e intercambio de significados en redes de interacción, a través de **procesos narrativos** interconectados.
+                </p>
+            </section>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Columna 1: El Cognosistema -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-l-4 border-purple-600">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-purple-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM13 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2zM13 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2z"></path></svg>
+                        2. El Cognosistema
+                    </h3>
+                    <p class="text-gray-700 mb-4">
+                        Es la megaestructura central. Se define como el **suprasistema narrativo ecosistémico** de mayor nivel. Es la arquitectura global que integra e interconecta todos los **sistemas narrativos** (individual, familiar, grupal, comunitario, institucional) de una sociedad.
+                    </p>
+                    <div class="bg-purple-50 p-4 rounded-lg text-sm">
+                        <p class="font-semibold text-purple-700">Estructura del Sistema Narrativo (8 Elementos):</p>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 ml-4 space-y-1">
+                            <li>Experiencia; Percepciones y Emociones; Contexto; Contenido Proposicional.</li>
+                            <li>Evaluación Cognitiva; Actitud Epistémica; Propósito Narrativo; Función Narrativa.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Columna 2: La Tripleta TCCR -->
+                <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border-l-4 border-teal-600">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-teal-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 10a.5.5 0 01.5-.5h7a.5.5 0 010 1H6a.5.5 0 01-.5-.5zM7.5 7a.5.5 0 01.5-.5h3a.5.5 0 010 1H8a.5.5 0 01-.5-.5zM8.5 13a.5.5 0 01.5-.5h1a.5.5 0 010 1H9a.5.5 0 01-.5-.5zM10 2a8 8 0 100 16 8 8 0 000-16zm-8 8a8 8 0 1116 0A8 8 0 0110 2z"></path><path fill-rule="evenodd" d="M10 18a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.5.5 0 00-.5.5v9a.5.5 0 001 0v-9a.5.5 0 00-.5-.5z" clip-rule="evenodd"></path></svg>
+                        3. La Tripleta TCCR (Pilares Teóricos)
+                    </h3>
+                    <p class="text-gray-700 mb-4">
+                        El trípode teórico-práctico que guía la acción profesional y el análisis crítico.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="p-3 bg-teal-50 rounded-lg border-l-4 border-teal-500">
+                            <span class="font-bold text-teal-700">Ontología Sistémico-Relacional:</span> El ser humano es fundamentalmente **vínculo**. El núcleo de estudio es la **estructuración relacional** en sociedad.
+                        </li>
+                        <li class="p-3 bg-teal-50 rounded-lg border-l-4 border-teal-500">
+                            <span class="font-bold text-teal-700">Epistemología Cognosistémica:</span> Fusión de lo cognitivo y lo sistémico para comprender la construcción de narrativas interconectadas.
+                        </li>
+                        <li class="p-3 bg-teal-50 rounded-lg border-l-4 border-teal-500">
+                            <span class="font-bold text-teal-700">Metodología Ecosistémica-Narrativa:</span> Articulación orgánica de micro–meso–macro con foco en la **transformación relacional** y la **justicia social**.
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Bloque de Herramientas LLM (Nuevo) -->
+            <section class="bg-gray-100 p-6 sm:p-8 rounded-xl shadow-inner border-t-8 border-yellow-500">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-yellow-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h3a1 1 0 100-2h-3zM5 4a1 1 0 112 0v2h2a1 1 0 010 2h-2v2a1 1 0 11-2 0V8H3a1 1 0 010-2h2V4zM12 11a1 1 0 100 2h3a1 1 0 100-2h-3zM12 15a1 1 0 100 2h3a1 1 0 100-2h-3zM10 2a8 8 0 100 16 8 8 0 000-16z"></path></svg>
+                    HERRAMIENTAS COGNOSISTÉMICAS impulsadas por IA
+                </h3>
+                
+                <!-- Contenedor de Interacción 1 (NUEVO): Consulta Conceptual TCCR (Q&A) -->
+                <div class="bg-white p-5 rounded-lg shadow-md mb-6 border-l-4 border-orange-500">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        1. 💡 Consulta Conceptual TCCR (Q&A)
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Pregunte sobre cualquier concepto, elemento o pilar de la TCCR. La IA responderá de forma rigurosa y académica, basándose **estrictamente** en el marco teórico de Jalin Simunovic (2025).
+                    </p>
+                    <textarea id="qaInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-orange-500 focus:border-orange-500 mb-3" rows="2" placeholder="Ej: ¿Qué son los memes cognosistémicos?"></textarea>
+                    <button id="queryTCCRBtn" class="w-full px-4 py-2 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition duration-150 flex items-center justify-center">
+                        <span id="qaBtnText">Consultar Concepto TCCR</span>
+                        <div id="qaLoading" class="loading-spinner ml-2 hidden"></div>
+                    </button>
+                    <div id="qaOutput" class="mt-4 p-4 bg-orange-50 border-l-4 border-orange-400 text-gray-700 rounded-lg hidden">
+                        <p class="font-bold text-orange-800 mb-1">Respuesta Cognosistémica:</p>
+                        <div id="qaText" class="prose max-w-none text-sm"></div>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Interacción 2 (ANTERIOR 1): Generador de Memes -->
+                <div class="bg-white p-5 rounded-lg shadow-md mb-6">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        2. ✨ Generador de Memes Cognosistémicos
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Ingrese una narrativa social, problemática o hegemónica (ej: "La pobreza es culpa de la falta de esfuerzo individual"). La IA generará un Meme Cognosistémico estratégico (unidad de significado transformador) para desafiarla desde la TCCR.
+                    </p>
+                    <textarea id="memeInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 mb-3" rows="3" placeholder="Ej: La desigualdad es un ciclo inevitable."></textarea>
+                    <button id="generateMemeBtn" class="w-full px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-150 flex items-center justify-center">
+                        <span id="memeBtnText">Generar Meme Transformador</span>
+                        <div id="memeLoading" class="loading-spinner ml-2 hidden"></div>
+                    </button>
+                    <div id="memeOutput" class="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 text-gray-700 rounded-lg hidden">
+                        <p class="font-bold text-blue-800 mb-1">Resultado del Meme Cognosistémico:</p>
+                        <p id="memeText"></p>
+                    </div>
+                </div>
+
+                <!-- Contenedor de Interacción 3 (ANTERIOR 2): Análisis de Narrativa (Grounded) -->
+                <div class="bg-white p-5 rounded-lg shadow-md">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        3. 🔎 Análisis Conceptual de Narrativa Psicosocial
+                    </h4>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Describa una problemática social o una situación de intervención (ej: "Una familia migrante enfrenta la narrativa de 'cuerpo extraño' en el microsistema escolar"). La IA analizará la narrativa usando la Tripleta TCCR y los Niveles Ecosistémicos, pudiendo usar búsqueda web para contexto.
+                    </p>
+                    <textarea id="analysisInput" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-teal-500 focus:border-teal-500 mb-3" rows="4" placeholder="Describa la narrativa psicosocial a analizar..."></textarea>
+                    <button id="analyzeBtn" class="w-full px-4 py-2 bg-teal-600 text-white font-bold rounded-lg hover:bg-teal-700 transition duration-150 flex items-center justify-center">
+                        <span id="analysisBtnText">Analizar con Tripleta TCCR</span>
+                        <div id="analysisLoading" class="loading-spinner ml-2 hidden"></div>
+                    </button>
+                    <div id="analysisOutput" class="mt-4 p-4 bg-teal-50 border-l-4 border-teal-400 text-gray-700 rounded-lg hidden">
+                        <p class="font-bold text-teal-800 mb-1">Análisis Ecosistémico-Narrativo (TCCR):</p>
+                        <div id="analysisText" class="prose max-w-none text-sm"></div>
+                        <div id="analysisSources" class="text-xs mt-3 italic text-gray-500"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Bloque 4: Justificación Crítica y Propósito de la Intervención (Mantenido) -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-2xl border-t-8 border-indigo-700">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-indigo-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+                    4. Justificación Crítica y Foco en la Intervención
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2 border-b pb-1">El Desafío Ontológico del TS</h4>
+                        <p class="text-gray-700">
+                            La TCCR aborda la debilidad histórica del Trabajo Social (TS) al dotarlo de una especificidad teórica: define su objeto de estudio y acción en la **"intersección psicosocial"** (interacción mente-sociedad). El objetivo es superar la percepción de ser una práctica sin teoría, centrando la disciplina en la **estructuración relacional** humana.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-2 border-b pb-1">Metodología para el Cambio Estructural</h4>
+                        <p class="text-gray-700">
+                            La metodología **Ecosistémica-Narrativa** es una respuesta directa a la crítica de la individualización de la práctica. Busca reorientar el TS hacia sus objetivos fundacionales de **cambio social estructural** y justicia. Esto se logra mediante la **articulación multinivel** (micro–meso–macro) con herramientas flexibles y robustas para el diagnóstico y la transformación de sistemas narrativos.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Footer (Cierre Académico) -->
+            <footer class="text-center text-sm text-gray-600 pt-6 pb-8">
+                <p>Análisis conceptual basado en el marco riguroso de la TCCR de Jalin Simunovic (2025).</p>
+                <p class="mt-1">Foco en intervención psicosocial basada en evidencia y transformación relacional. © 2025.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Script de Inicialización y Lógica LLM -->
+    <script type="module">
+        // Variables globales para la API
+        const API_KEY = "";
+        const API_URL_FLASH = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        
+        // --- Elementos del DOM ---
+        
+        // 1. Q&A Conceptual
+        const qaInput = document.getElementById('qaInput');
+        const queryTCCRBtn = document.getElementById('queryTCCRBtn');
+        const qaOutput = document.getElementById('qaOutput');
+        const qaText = document.getElementById('qaText');
+        const qaLoading = document.getElementById('qaLoading');
+        const qaBtnText = document.getElementById('qaBtnText');
+
+        // 2. Generador de Memes
+        const memeInput = document.getElementById('memeInput');
+        const generateMemeBtn = document.getElementById('generateMemeBtn');
+        const memeOutput = document.getElementById('memeOutput');
+        const memeText = document.getElementById('memeText');
+        const memeLoading = document.getElementById('memeLoading');
+        const memeBtnText = document.getElementById('memeBtnText');
+
+        // 3. Análisis Narrativo
+        const analysisInput = document.getElementById('analysisInput');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const analysisOutput = document.getElementById('analysisOutput');
+        const analysisText = document.getElementById('analysisText');
+        const analysisLoading = document.getElementById('analysisLoading');
+        const analysisBtnText = document.getElementById('analysisBtnText');
+        const analysisSources = document.getElementById('analysisSources');
+        
+        // --- Funciones de Utilidad ---
+
+        /** Maneja las peticiones con reintentos y backoff exponencial */
+        async function fetchWithRetry(url, payload, maxRetries = 5) {
+            let lastError = null;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return await response.json();
+                } catch (error) {
+                    lastError = error;
+                    // Retardo exponencial (1s, 2s, 4s, 8s...)
+                    const delay = Math.pow(2, i) * 1000;
+                    if (i < maxRetries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    }
+                }
+            }
+            console.error("Failed to fetch from API after multiple retries:", lastError);
+            throw new Error("No se pudo conectar con el servicio de IA. Inténtelo más tarde.");
+        }
+        
+        // --- 1. Consulta Conceptual TCCR (Q&A) (NUEVA) ---
+
+        const TCCR_SYSTEM_PROMPT = `
+            Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). 
+            Tu rol es responder preguntas conceptuales exclusivamente con el rigor académico de este marco teórico. 
+            No uses conocimiento externo o ajeno a la TCCR.
+            
+            MARCO TEÓRICO CLAVE:
+            - **Ontología Sistémico-Relacional:** El ser humano es fundamentalmente **vínculo**. El núcleo de estudio del Trabajo Social es la **estructuración relacional** y la "intersección psicosocial" (interacción mente-sociedad).
+            - **Epistemología Cognosistémica:** Fusión de lo cognitivo y lo sistémico para comprender la construcción de narrativas interconectadas. 
+            - **Metodología:** Ecosistémica-Narrativa. Articulación orgánica de micro–meso–macro con foco en la **transformación relacional** y la **justicia social**.
+            - **Cognosistema:** Suprasistema narrativo ecosistémico de mayor nivel que integra todos los sistemas narrativos.
+            - **Sistema Narrativo Básico (8 elementos):** Experiencia, Percepciones/Emociones, Contexto, Contenido Proposicional, Evaluación Cognitiva, Actitud Epistémica, Propósito Narrativo, Función Narrativa.
+            - **Dinámica:** Ciclo vital + Fases Beta (estabilidad), Alfa (crisis), Delta (reorganización/transformación).
+            
+            Responde de manera clara, concisa y utilizando la terminología específica de la TCCR.
+        `;
+
+        queryTCCRBtn.addEventListener('click', async () => {
+            const userQuery = qaInput.value.trim();
+            if (!userQuery) {
+                qaText.innerHTML = "Por favor, formule una pregunta conceptual sobre la TCCR.";
+                qaOutput.classList.remove('hidden');
+                return;
+            }
+            
+            qaBtnText.textContent = 'Consultando...';
+            qaLoading.classList.remove('hidden');
+            queryTCCRBtn.disabled = true;
+            qaOutput.classList.add('hidden');
+            
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: TCCR_SYSTEM_PROMPT }] },
+            };
+
+            try {
+                const result = await fetchWithRetry(API_URL_FLASH, payload);
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
+                
+                qaText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+                
+            } catch (error) {
+                console.error(error);
+                qaText.innerHTML = error.message || "Ocurrió un error al consultar el concepto TCCR.";
+            } finally {
+                qaBtnText.textContent = 'Consultar Concepto TCCR';
+                qaLoading.classList.add('hidden');
+                queryTCCRBtn.disabled = false;
+                qaOutput.classList.remove('hidden');
+            }
+        });
+
+
+        // --- 2. Generador de Memes Cognosistémicos (Mantenido) ---
+
+        generateMemeBtn.addEventListener('click', async () => {
+            const userNarrative = memeInput.value.trim();
+            if (!userNarrative) {
+                memeText.textContent = "Por favor, ingrese una narrativa para generar el Meme Cognosistémico.";
+                memeOutput.classList.remove('hidden');
+                return;
+            }
+            
+            memeBtnText.textContent = 'Generando...';
+            memeLoading.classList.remove('hidden');
+            generateMemeBtn.disabled = true;
+            memeOutput.classList.add('hidden');
+            
+            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR). Tu tarea es generar un "Meme Cognosistémico" (unidad de significado estratégica) que sea conciso, potente, fácilmente propagable y que contradiga/transforme la narrativa subyugante proporcionada por el usuario. El Meme debe basarse en la ontología sistémico-relacional de la TCCR ("el ser humano es vínculo") y promover la justicia social. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
+
+            const userQuery = `Narrativa dominante o problemática: "${userNarrative}". Genera el Meme Cognosistémico transformador y su explicación.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const result = await fetchWithRetry(API_URL_FLASH, payload);
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
+                
+                // Formateo del resultado: separamos el meme de la explicación
+                const parts = text.split('\n').filter(p => p.trim() !== '');
+                if (parts.length >= 2) {
+                    memeText.innerHTML = `<span class="text-xl font-extrabold text-blue-700 block mb-2">"${parts[0]}"</span><p>${parts.slice(1).join('<br>')}</p>`;
+                } else {
+                    memeText.textContent = text;
+                }
+                
+            } catch (error) {
+                console.error(error);
+                memeText.textContent = error.message || "Ocurrió un error al generar el Meme Cognosistémico.";
+            } finally {
+                memeBtnText.textContent = 'Generar Meme Transformador';
+                memeLoading.classList.add('hidden');
+                generateMemeBtn.disabled = false;
+                memeOutput.classList.remove('hidden');
+            }
+        });
+
+        // --- 3. Análisis de Narrativa Psicosocial (Grounded) (Mantenido) ---
+
+        analyzeBtn.addEventListener('click', async () => {
+            const userNarrative = analysisInput.value.trim();
+            if (!userNarrative) {
+                analysisText.innerHTML = "<p>Por favor, describa una situación o narrativa para que la IA la analice con el marco TCCR.</p>";
+                analysisOutput.classList.remove('hidden');
+                return;
+            }
+
+            analysisBtnText.textContent = 'Analizando...';
+            analysisLoading.classList.remove('hidden');
+            analyzeBtn.disabled = true;
+            analysisOutput.classList.add('hidden');
+            
+            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). Analiza la siguiente narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
+
+            const userQuery = `Analiza el siguiente caso/situación con la TCCR, identificando la Tripleta y los niveles de intervención requeridos: "${userNarrative}".`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }], // Usar Google Search para Grounding
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+            };
+
+            try {
+                const result = await fetchWithRetry(API_URL_FLASH, payload);
+                const candidate = result.candidates?.[0];
+                const text = candidate?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
+                
+                // 1. Extraer texto y formatear para HTML (Markdown)
+                analysisText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>');
+
+                // 2. Extraer fuentes (grounding sources)
+                let sources = [];
+                const groundingMetadata = candidate?.groundingMetadata;
+                if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                    sources = groundingMetadata.groundingAttributions
+                        .map(attribution => ({
+                            uri: attribution.web?.uri,
+                            title: attribution.web?.title,
+                        }))
+                        .filter(source => source.uri && source.title);
+                }
+
+                if (sources.length > 0) {
+                    let sourcesHtml = 'Fuentes citadas (Grounding): ';
+                    sources.forEach((source, index) => {
+                        sourcesHtml += `<a href="${source.uri}" target="_blank" class="text-blue-500 hover:text-blue-700">${source.title}</a>${index < sources.length - 1 ? ', ' : ''}`;
+                    });
+                    analysisSources.innerHTML = sourcesHtml;
+                } else {
+                    analysisSources.innerHTML = '';
+                }
+                
+            } catch (error) {
+                console.error(error);
+                analysisText.innerHTML = `<p>${error.message || "Ocurrió un error al realizar el análisis."}</p>`;
+                analysisSources.innerHTML = '';
+            } finally {
+                analysisBtnText.textContent = 'Analizar con Tripleta TCCR';
+                analysisLoading.classList.add('hidden');
+                analyzeBtn.disabled = false;
+                analysisOutput.classList.remove('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
