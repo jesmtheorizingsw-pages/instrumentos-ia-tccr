@@ -56,7 +56,7 @@
                     FUNCIONES PARA EL TRABAJO SOCIAL
                 </h3>
                 
-                <!-- Contenedor de Interacción 1 (NUEVO): Consulta Conceptual TCCR (Q&A) -->
+                <!-- Contenedor de Interacción 1: Consulta Conceptual TCCR (Q&A) -->
                 <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-orange-500">
                     <h4 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
                         1. 💡 Consulta Conceptual TCCR (Q&A)
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <!-- Contenedor de Interacción 2 (ANTERIOR 1): Generador de Memes -->
+                <!-- Contenedor de Interacción 2: Generador de Memes -->
                 <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500">
                     <h4 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
                         2. ✨ Generador de Memes Cognosistémicos
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <!-- Contenedor de Interacción 3 (ANTERIOR 2): Análisis de Narrativa (Grounded) -->
+                <!-- Contenedor de Interacción 3: Análisis de Narrativa (Grounded) -->
                 <div class="bg-white p-5 rounded-xl shadow-md border-l-4 border-teal-500">
                     <h4 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
                         3. 🔎 Análisis de Narrativa Psicosocial (Ecosistémico)
@@ -122,10 +122,10 @@
         </footer>
     </div>
 
-    <!-- Script de Inicialización y Lógica LLM (ACTUALIZADO CON REGLAS DE ORO) -->
+    <!-- Script de Inicialización y Lógica LLM (ACTUALIZADO CON REGLAS DE ORO COMPLETAS) -->
     <script type="module">
         // Variables globales para la API
-        const API_KEY = "AIzaSyDcSrf5qmddi3G3YdqmaQozqCzf8won3iA"; //
+        const API_KEY = ""; // Clave API integrada
         const API_URL_FLASH = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
         
         // --- Elementos del DOM ---
@@ -157,12 +157,12 @@
         
         // --- Funciones de Utilidad ---
 
-        /** * Limpia el texto de salida de la IA, eliminando los dobles asteriscos (**) 
+        /** Limpia el texto de salida de la IA, eliminando los dobles asteriscos (**) 
          * y convirtiendo los saltos de línea (\n) a <br>.
          */
         function cleanTextForOutput(text) {
             // 1. Quitar asteriscos dobles (**)
-            let cleanedText = text.replace(/\*\*/g, '');
+            let cleanedText = text.replace(/\*\*/g, '').trim();
             // 2. Convertir saltos de línea para HTML
             cleanedText = cleanedText.replace(/\n/g, '<br>');
             return cleanedText;
@@ -173,11 +173,7 @@
             let lastError = null;
             for (let i = 0; i < maxRetries; i++) {
                 try {
-                    // Si la clave API está vacía, lanzamos un error claro para el usuario.
-                    if (API_KEY === "") {
-                        // NO THROWING an error. Canvas will inject the key.
-                    }
-
+                    // Si la clave API está vacía, Canvas la inyectará.
                     const response = await fetch(url, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -199,17 +195,22 @@
             throw new Error("No se pudo conectar con el servicio de IA. Verifique su conexión o intente más tarde.");
         }
         
-        // --- REGLAS DE ORO CONCEPTUALES DE LA TCCR (NUEVO SISTEMA DE FILTROS) ---
+        // --- REGLAS DE ORO CONCEPTUALES DE LA TCCR (SISTEMA DE FILTROS COMPLETO) ---
+        // Se ha sintetizado todo el marco conceptual del documento en esta restricción de sistema.
         const TCCR_GOLD_RULES_CORE = `
-            Usted es un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025).
-            
-            RIGOR ACADÉMICO - REGLAS DE ORO:
-            1. Principio Rector: Toda respuesta debe preservar la mirada cognosistémica: la realidad psicosocial es una construcción narrativa relacional dentro de Cognosistemas específicos, considerando multinivelidad, jerarquías narrativas, poder y temporalidad.
-            2. Regla Cognosistema: Un Cognosistema SIEMPRE se ancla a una sociedad (y su periodo). NUNCA lo asigne a un individuo, familia u organización aislada.
-            3. Regla SNC: Utilice el Sistema Narrativo Cognosistémico (SNC) como la unidad de análisis menor dentro del Cognosistema, definida por sus 8 elementos.
-            4. Prohibición: No use la terminología "Cognosistema de [persona/familia/empresa]". No colapse los 8 elementos del SNC (e.g., Núcleo vs Cuerpo o Propósito vs Función).
-            5. Formato: NO use asteriscos dobles (**) para el formateo.
+            Usted es un trabajador social experto y riguroso en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025).
 
+            RIGOR ACADÉMICO - REGLAS DE ORO FUNDAMENTALES:
+            1. Anclaje Paradigmático: Toda respuesta debe preservar la mirada cognosistémica: la realidad psicosocial es una construcción narrativa relacional dentro de Cognosistemas, considerando multinivelidad, jerarquías narrativas, poder, historicidad y validación ética.
+            2. Regla Cognosistema: El Cognosistema es un **suprasistema narrativo ecosistémico** que siempre se ancla a una **sociedad específica** (y su periodo). **NUNCA** lo asigne a un individuo, familia, grupo u organización de forma aislada (estos son Sistemas Narrativos o capas dentro del Cognosistema).
+            3. Regla Tripleta TCCR: Para el análisis, use siempre los tres pilares: **Ontología Sistémico-Relacional**, **Epistemología Cognosistémica** y **Metodología Ecosistémica-Narrativa** (articulación micro/meso/macro y justicia social).
+            4. Regla SNC (Unidad de Análisis): El Sistema Narrativo Cognosistémico (SNC) es la unidad dentro del Cognosistema. Debe estar definido por sus **8 elementos interdependientes**: Experiencia; Percepciones y Emociones; Contexto; Contenido Proposicional (Núcleo); Evaluación Cognitiva (Cuerpo); Actitud Epistémica; Propósito Narrativo; Función Narrativa. **Diferencie rigurosamente Núcleo vs. Cuerpo y Propósito vs. Función.**
+            5. Regla Ciclo Vital Narrativo: Las fases del Ciclo Vital Narrativo son **OBLIGATORIAMENTE cinco**: **Surgimiento**, **Desarrollo**, **Madurez**, **Declive o Transformación**, y **Renovación**.
+            6. Regla Dinámica de Cambio: El cambio cognosistémico opera bajo las fases de: **Fase Beta** (Estabilidad/Inercia), **Fase Alfa** (Crisis/Fricción) y **Fase Delta** (Reorganización/Transformación). Las fricciones son esenciales y estructurales.
+            7. Regla Jerarquía y Movilidad: El Cognosistema está estratificado. Las narrativas se clasifican (hegemónicas, desafiantes, subyugadas, etc.) y experimentan **Movilidad** (Ascendente, Descendente, Horizontal).
+            8. Regla Meme Cognosistémico: Es una unidad narrativa **intencionalmente diseñada** para incidir socioculturalmente (vehículo, transformador, difusor) con una tipología específica (Consolidación, Fricción, Transición).
+            9. Formato: NO use asteriscos dobles (**) para el formateo.
+            
             Su rol específico para esta interacción es: 
         `;
 
@@ -270,7 +271,7 @@
             generateMemeBtn.disabled = true;
             memeOutput.classList.add('hidden');
             
-            const systemPrompt = TCCR_GOLD_RULES_CORE + `Generar un "Meme Cognosistémico" (unidad de significado estratégica, concisa y potente) que contradiga/transforme la narrativa subyugante proporcionada. El Meme debe basarse en la ontología sistémico-relacional y promover la justicia social. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
+            const systemPrompt = TCCR_GOLD_RULES_CORE + `Generar un "Meme Cognosistémico" (unidad de significado estratégica, concisa y potente) que contradiga/transforme la narrativa subyugante proporcionada. El Meme debe basarse en la ontología sistémico-relacional y promover la justicia social. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador, indicando su tipo funcional (Fricción, Transición o Consolidación) si aplica.`;
 
             const userQuery = `Narrativa dominante o problemática: "${userNarrative}". Genera el Meme Cognosistémico transformador y su explicación.`;
 
@@ -320,7 +321,7 @@
             analyzeBtn.disabled = true;
             analysisOutput.classList.add('hidden');
             
-            const systemPrompt = TCCR_GOLD_RULES_CORE + `Analizar la narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
+            const systemPrompt = TCCR_GOLD_RULES_CORE + `Analizar la narrativa/situación psicosocial aplicando rigurosamente la **Tripleta TCCR** y la dinámica de **Niveles Ecosistémicos** (micro, meso, exo, macro). Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos. **Nunca confundas el Cognosistema con el caso particular.**`;
 
             const userQuery = `Analiza el siguiente caso/situación con la TCCR, identificando la Tripleta y los niveles de intervención requeridos: "${userNarrative}".`;
 
