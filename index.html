@@ -122,10 +122,10 @@
         </footer>
     </div>
 
-    <!-- Script de Inicialización y Lógica LLM (MANTENIDO) -->
+    <!-- Script de Inicialización y Lógica LLM (ACTUALIZADO CON REGLAS DE ORO) -->
     <script type="module">
         // Variables globales para la API
-        const API_KEY = "AIzaSyDcSrf5qmddi3G3YdqmaQozqCzf8won3iA"; // Clave API integrada
+        const API_KEY = ""; // Clave API integrada
         const API_URL_FLASH = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
         
         // --- Elementos del DOM ---
@@ -175,7 +175,7 @@
                 try {
                     // Si la clave API está vacía, lanzamos un error claro para el usuario.
                     if (API_KEY === "") {
-                        throw new Error("ERROR TCCR: Clave API no configurada. Necesita una clave válida de Gemini para usar las herramientas de IA.");
+                        // NO THROWING an error. Canvas will inject the key.
                     }
 
                     const response = await fetch(url, {
@@ -199,24 +199,22 @@
             throw new Error("No se pudo conectar con el servicio de IA. Verifique su conexión o intente más tarde.");
         }
         
-        // --- 1. Consulta Conceptual TCCR (Q&A) ---
+        // --- REGLAS DE ORO CONCEPTUALES DE LA TCCR (NUEVO SISTEMA DE FILTROS) ---
+        const TCCR_GOLD_RULES_CORE = `
+            Usted es un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025).
+            
+            RIGOR ACADÉMICO - REGLAS DE ORO:
+            1. Principio Rector: Toda respuesta debe preservar la mirada cognosistémica: la realidad psicosocial es una construcción narrativa relacional dentro de Cognosistemas específicos, considerando multinivelidad, jerarquías narrativas, poder y temporalidad.
+            2. Regla Cognosistema: Un Cognosistema SIEMPRE se ancla a una sociedad (y su periodo). NUNCA lo asigne a un individuo, familia u organización aislada.
+            3. Regla SNC: Utilice el Sistema Narrativo Cognosistémico (SNC) como la unidad de análisis menor dentro del Cognosistema, definida por sus 8 elementos.
+            4. Prohibición: No use la terminología "Cognosistema de [persona/familia/empresa]". No colapse los 8 elementos del SNC (e.g., Núcleo vs Cuerpo o Propósito vs Función).
+            5. Formato: NO use asteriscos dobles (**) para el formateo.
 
-        const TCCR_SYSTEM_PROMPT = `
-            Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). 
-            Tu rol es responder preguntas conceptuales exclusivamente con el rigor académico de este marco teórico. 
-            No uses conocimiento externo o ajeno a la TCCR.
-            
-            MARCO TEÓRICO CLAVE:
-            - Ontología Sistémico-Relacional: El ser humano es fundamentalmente vínculo. El núcleo de estudio del Trabajo Social es la estructuración relacional y la "intersección psicosocial" (interacción mente-sociedad).
-            - Epistemología Cognosistémica: Fusión de lo cognitivo y lo sistémico para comprender la construcción de narrativas interconectadas. 
-            - Metodología: Ecosistémica-Narrativa. Articulación orgánica de micro–meso–macro con foco en la transformación relacional y la justicia social.
-            - Cognosistema: Suprasistema narrativo ecosistémico de mayor nivel que integra todos los sistemas narrativos.
-            - Sistema Narrativo Básico (8 elementos): Experiencia, Percepciones/Emociones, Contexto, Contenido Proposicional, Evaluación Cognitiva, Actitud Epistémica, Propósito Narrativo, Función Narrativa.
-            - Dinámica: Ciclo vital + Fases Beta (estabilidad), Alfa (crisis), Delta (reorganización/transformación).
-            
-            IMPORTANTE: Para el formateo del texto de salida, NO utilices los asteriscos dobles (**). Solo utiliza texto plano y saltos de línea.
-            Responde de manera clara, concisa y utilizando la terminología específica de la TCCR.
+            Su rol específico para esta interacción es: 
         `;
+
+
+        // --- 1. Consulta Conceptual TCCR (Q&A) ---
 
         queryTCCRBtn.addEventListener('click', async () => {
             const userQuery = qaInput.value.trim();
@@ -231,9 +229,11 @@
             queryTCCRBtn.disabled = true;
             qaOutput.classList.add('hidden');
             
+            const systemPrompt = TCCR_GOLD_RULES_CORE + `Responder preguntas conceptuales exclusivamente con el rigor académico de este marco teórico de la TCCR. No uses conocimiento externo o ajeno a la TCCR. Responde de manera clara, concisa y utilizando la terminología específica de la TCCR.`;
+
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: TCCR_SYSTEM_PROMPT }] },
+                systemInstruction: { parts: [{ text: systemPrompt }] },
             };
 
             try {
@@ -270,7 +270,7 @@
             generateMemeBtn.disabled = true;
             memeOutput.classList.add('hidden');
             
-            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR). Tu tarea es generar un "Meme Cognosistémico" (unidad de significado estratégica) que sea conciso, potente, fácilmente propagable y que contradiga/transforme la narrativa subyugante proporcionada por el usuario. El Meme debe basarse en la ontología sistémico-relacional de la TCCR ("el ser humano es vínculo") y promover la justicia social. IMPORTANTE: No uses asteriscos dobles (**) para el formateo. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
+            const systemPrompt = TCCR_GOLD_RULES_CORE + `Generar un "Meme Cognosistémico" (unidad de significado estratégica, concisa y potente) que contradiga/transforme la narrativa subyugante proporcionada. El Meme debe basarse en la ontología sistémico-relacional y promover la justicia social. El resultado debe ser solo el meme (una frase corta e impactante) y una breve explicación de 2-3 líneas de su propósito transformador.`;
 
             const userQuery = `Narrativa dominante o problemática: "${userNarrative}". Genera el Meme Cognosistémico transformador y su explicación.`;
 
@@ -320,7 +320,7 @@
             analyzeBtn.disabled = true;
             analysisOutput.classList.add('hidden');
             
-            const systemPrompt = `Eres un trabajador social experto en la Teoría Cognosistémica de la Construcción Relacional Psicosocial Humana (TCCR) de Jalin Simunovic (2025). Analiza la siguiente narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). IMPORTANTE: No utilices asteriscos dobles (**) para formatear el texto. Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
+            const systemPrompt = TCCR_GOLD_RULES_CORE + `Analizar la narrativa/situación psicosocial aplicando rigurosamente la Tripleta TCCR (Ontología Sistémico-Relacional, Epistemología Cognosistémica, Metodología Ecosistémica-Narrativa) y la dinámica de Niveles Ecosistémicos (micro, meso, exo, macro). Tu respuesta debe ser concisa, estructurada y en español. Utiliza Google Search para fundamentar el análisis si la problemática es de actualidad o requiere datos externos.`;
 
             const userQuery = `Analiza el siguiente caso/situación con la TCCR, identificando la Tripleta y los niveles de intervención requeridos: "${userNarrative}".`;
 
