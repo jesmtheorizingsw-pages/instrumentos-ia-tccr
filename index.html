@@ -126,8 +126,8 @@
     <!-- Script de Inicialización y Lógica LLM (ACTUALIZADO CON REGLAS DE ORO COMPLETAS) -->
     <script type="module">
         // Variables globales para la API
-        const API_KEY = "AIzaSyDcSrf5qmddi3G3YdqmaQozqCzf8won3iA"; //
-        const API_URL_FLASH = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        const ENDPOINT = "https://timely-hummingbird-fa79a0.netlify.app/.netlify/functions/gemini";
+        const APP_TOKEN = ""; // opcional: si activaste APP_CLIENT_TOKEN en Netlify, colócalo aquí
         
         // --- Elementos del DOM ---
         
@@ -177,7 +177,7 @@
                     // Si la clave API está vacía, Canvas la inyectará.
                     const response = await fetch(url, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'application/json', 'X-App-Key': APP_TOKEN },
                         body: JSON.stringify(payload)
                     });
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -233,14 +233,11 @@
             
             const systemPrompt = TCCR_GOLD_RULES_CORE + `Responder preguntas conceptuales exclusivamente con el rigor académico de este marco teórico de la TCCR. No uses conocimiento externo o ajeno a la TCCR. Responde de manera clara, concisa y utilizando la terminología específica de la TCCR.`;
 
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
+            const payload = { text: userQuery, systemInstruction: systemPrompt };
 
             try {
-                const result = await fetchWithRetry(API_URL_FLASH, payload);
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
+                const result = await fetchWithRetry(ENDPOINT, payload);
+                const text = result?.output?.text || "Error en la generación del contenido.";
                 
                 // Aplicar el filtro de limpieza al texto generado
                 qaText.innerHTML = cleanTextForOutput(text);
@@ -282,8 +279,8 @@
             };
 
             try {
-                const result = await fetchWithRetry(API_URL_FLASH, payload);
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
+                const result = await fetchWithRetry(ENDPOINT, payload);
+                const text = result?.output?.text || "Error en la generación del contenido.";
                 
                 // Formateo del resultado: separamos el meme de la explicación
                 const parts = text.split('\n').filter(p => p.trim() !== '');
@@ -326,17 +323,14 @@
 
             const userQuery = `Analiza el siguiente caso/situación con la TCCR, identificando la Tripleta y los niveles de intervención requeridos: "${userNarrative}".`;
 
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                tools: [{ "google_search": {} }], // Usar Google Search para Grounding
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
+            const payload = { text: userQuery, systemInstruction: systemPrompt };
+            // Nota: si más adelante quieres grounding, habría que exponer `raw` en el backend.
 
             try {
-                const result = await fetchWithRetry(API_URL_FLASH, payload);
-                const candidate = result.candidates?.[0];
-                const text = candidate?.content?.parts?.[0]?.text || "Error en la generación del contenido.";
-                
+                const result = await fetchWithRetry(ENDPOINT, payload);
+                const candidate = undefined; // sin 'raw' desde backend genérico
+                const text = result?.output?.text || "Error en la generación del contenido.";
+
                 // 1. Extraer texto y aplicar el filtro de limpieza
                 analysisText.innerHTML = cleanTextForOutput(text);
 
